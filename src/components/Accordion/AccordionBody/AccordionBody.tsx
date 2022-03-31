@@ -1,11 +1,11 @@
 import React from "react";
 
-type PropsAccordionBodyType = {
-    name:string
+type AccordionBodyPropsType = {
+    title:string
 }
 
-export const AccordionBody = (props:PropsAccordionBodyType) => {
+export const AccordionBody = (props:AccordionBodyPropsType) => {
     return (
-        <h3>{props.name}</h3>
+        <h3>{props.title}</h3>
     )
 }

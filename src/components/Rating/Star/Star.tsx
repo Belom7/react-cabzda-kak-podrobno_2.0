@@ -1,10 +1,10 @@
 import React from "react";
 
-type PropsStarType = {
+type StarPropsType = {
     selected: boolean
 }
 
-export const Star = (props: PropsStarType) => {
+export const Star = (props: StarPropsType) => {
     if (props.selected === false) {
         return (
             <>star </>

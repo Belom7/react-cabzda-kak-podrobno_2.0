@@ -1,10 +1,10 @@
 import React from "react";
 
-type PropsAppTitleType = {
+type AppTitlePropsType = {
     title:string
 }
 
-export const AppTitle = (props:PropsAppTitleType) => {
+export const AppTitle = (props:AppTitlePropsType) => {
     return (
         <>{props.title}</>
     )

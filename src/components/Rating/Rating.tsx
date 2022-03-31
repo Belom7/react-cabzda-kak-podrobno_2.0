@@ -1,11 +1,11 @@
 import React from "react";
 import {Star} from "./Star/Star";
 
-type PropsRatingType = {
-    value:number
+type RatingPropsType = {
+    value: 0 | 1 | 2 | 3 | 4 | 5
 }
 
-export const Rating = (props:PropsRatingType) => {
+export const Rating = (props:RatingPropsType) => {
     if(props.value===1){
         return (
             <div>
