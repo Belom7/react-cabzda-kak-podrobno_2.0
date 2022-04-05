@@ -5,6 +5,7 @@ type StarPropsType = {
 }
 
 export const Star = (props: StarPropsType) => {
+
     if (props.selected === false) {
         return (
             <>star </>
