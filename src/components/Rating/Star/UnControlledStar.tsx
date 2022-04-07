@@ -6,13 +6,5 @@ type StarPropsType = {
 
 export const UnControlledStar = (props: StarPropsType) => {
 
-    if (props.selected === false) {
-        return (
-            <>star </>
-        )
-    } else {
-        return (
-            <><b>star</b> </>
-        )
-    }
+    return props.selected? <><b>star</b> </>: <>star </>
 }
