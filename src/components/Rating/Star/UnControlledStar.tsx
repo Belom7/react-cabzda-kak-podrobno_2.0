@@ -4,7 +4,7 @@ type StarPropsType = {
     selected: boolean
 }
 
-export const Star = (props: StarPropsType) => {
+export const UnControlledStar = (props: StarPropsType) => {
 
     if (props.selected === false) {
         return (
@@ -15,5 +15,4 @@ export const Star = (props: StarPropsType) => {
             <><b>star</b> </>
         )
     }
-
 }

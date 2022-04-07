@@ -1,24 +1,45 @@
 import React from 'react';
 import './App.css';
-import {Rating} from "./components/Rating/Rating";
-import {Accordion} from "./components/Accordion/Accordion";
+import {UnControlledRating} from "./components/Rating/UnControlledRating";
+import {UnControlledAccordion} from "./components/Accordion/UnControlledAccordion";
 import {AppTitle} from "./components/AppTitle/AppTitle";
-import {OnOff} from "./components/OnOff/OnOff";
+import {UnControlledOnOff} from "./components/OnOff/UnControlledOnOff";
+import {SelfControlledOnOff} from "./components/OnOff/SelfControlledOnOff";
+import {SelfControlledAccordion} from "./components/Accordion/SelfControlledAccordion";
+import {SelfControlledRating} from "./components/Rating/SelfControlledRating";
 
 function App() {
     return (
         <div>
             <AppTitle title={'This is App component'}/>
-            <Rating value={0}/>
-            <Rating value={1}/>
-            <Rating value={2}/>
-            <Rating value={3}/>
-            <Rating value={4}/>
-            <Rating value={5}/>
-            <Accordion collapsed={true} titleValue={'Menu1'}/>
-            <Accordion collapsed={false} titleValue={'Menu2'}/>
-            <OnOff value={true}/>
-            <OnOff value={false}/>
+
+            <AppTitle title={'UnControlledComponents'}/>
+
+            <UnControlledRating value={0}/>
+            <UnControlledRating value={1}/>
+            <UnControlledRating value={2}/>
+            <UnControlledRating value={3}/>
+            <UnControlledRating value={4}/>
+            <UnControlledRating value={5}/>
+
+            <UnControlledAccordion collapsed={true} titleValue={'Menu1'}/>
+            <UnControlledAccordion collapsed={false} titleValue={'Menu2'}/>
+
+            <UnControlledOnOff value={true}/>
+            <UnControlledOnOff value={false}/>
+
+            <AppTitle title={'SelfControlledComponents'}/>
+
+            <SelfControlledRating/>
+            <SelfControlledRating/>
+            <SelfControlledRating/>
+
+            <SelfControlledAccordion titleValue={'Menu1'}/>
+            <SelfControlledAccordion titleValue={'Menu2'}/>
+
+            <SelfControlledOnOff/>
+            <SelfControlledOnOff/>
+            <SelfControlledOnOff/>
         </div>
     );
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 
-type OnOffPropsType = {
+type UnControlledOnOffPropsType = {
     value: boolean
 }
 
-export const OnOff = (props: OnOffPropsType) => {
+export const UnControlledOnOff = (props: UnControlledOnOffPropsType) => {
 
     const onStyle = {
         width:'40px',
