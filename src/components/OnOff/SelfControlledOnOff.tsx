@@ -1,10 +1,18 @@
 import React, {useState} from 'react';
 
-export const SelfControlledOnOff = () => {
+type SelfControlledOnOffType = {
+    callBack: (value:boolean) => void
+}
+
+export const SelfControlledOnOff = (props: SelfControlledOnOffType) => {
 
     const [value, setValue] = useState(false)
 
-    const onClickHandler = (valueButton:boolean) => {setValue(valueButton)}
+    const onClickHandler = (valueButton: boolean) => {
+        setValue(valueButton)
+        callBack()
+    }
+    const callBack = () => props.callBack(value)
 
     const onStyle = {
         width: '40px',
