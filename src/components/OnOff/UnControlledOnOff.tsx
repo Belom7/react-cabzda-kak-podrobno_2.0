@@ -2,6 +2,7 @@ import React from 'react';
 
 type UnControlledOnOffPropsType = {
     value: boolean
+    callBack:(value:boolean)=>void
 }
 
 export const UnControlledOnOff = (props: UnControlledOnOffPropsType) => {
@@ -35,8 +36,8 @@ export const UnControlledOnOff = (props: UnControlledOnOffPropsType) => {
 
     return (
         <div>
-            <div style={onStyle}>On</div>
-            <div style={offStyle}>Off</div>
+            <div style={onStyle} onClick={()=>props.callBack(true)}>On</div>
+            <div style={offStyle} onClick={()=>props.callBack(false)}>Off</div>
             <div style={indicationStyle}></div>
         </div>
     );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {UnControlledRating} from "./components/Rating/UnControlledRating";
 import {UnControlledAccordion} from "./components/Accordion/UnControlledAccordion";
@@ -8,25 +8,32 @@ import {SelfControlledOnOff} from "./components/OnOff/SelfControlledOnOff";
 import {SelfControlledAccordion} from "./components/Accordion/SelfControlledAccordion";
 import {SelfControlledRating} from "./components/Rating/SelfControlledRating";
 
+export type ratingValueType = 0 | 1 | 2 | 3 | 4 | 5
+
 function App() {
+
+        const[ratingValue, setRatingValue] = useState<ratingValueType>(0)
+        const[collapsedAccordion, setCollapsedAccordion] = useState<boolean>(false)
+        const[valueOnOff, setValueOnOff] = useState<boolean>(false)
+
     return (
         <div>
             <AppTitle title={'This is App component'}/>
 
             <AppTitle title={'UnControlledComponents'}/>
 
-            <UnControlledRating value={0}/>
-            <UnControlledRating value={1}/>
-            <UnControlledRating value={2}/>
-            <UnControlledRating value={3}/>
-            <UnControlledRating value={4}/>
-            <UnControlledRating value={5}/>
+            <UnControlledRating rating={ratingValue} callBack={setRatingValue}/>
+            {/*<UnControlledRating value={1}/>*/}
+            {/*<UnControlledRating value={2}/>*/}
+            {/*<UnControlledRating value={3}/>*/}
+            {/*<UnControlledRating value={4}/>*/}
+            {/*<UnControlledRating value={5}/>*/}
 
-            <UnControlledAccordion collapsed={true} titleValue={'Menu1'}/>
-            <UnControlledAccordion collapsed={false} titleValue={'Menu2'}/>
+            <UnControlledAccordion collapsed={collapsedAccordion} titleValue={'Menu1'} callBack={setCollapsedAccordion}/>
+            {/*<UnControlledAccordion collapsed={collapsedAccordion} titleValue={'Menu2'} callBack={setCollapsedAccordion}/>*/}
 
-            <UnControlledOnOff value={true}/>
-            <UnControlledOnOff value={false}/>
+            <UnControlledOnOff value={valueOnOff} callBack={setValueOnOff}/>
+            {/*<UnControlledOnOff value={false}/>*/}
 
             <AppTitle title={'SelfControlledComponents'}/>
 

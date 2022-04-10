@@ -2,10 +2,12 @@ import React from "react";
 
 type AccordionBodyPropsType = {
     title:string
+    collapsed:boolean
+    callBack:(collapsed:boolean)=>void
 }
 
 export const UnControlledAccordionBody = (props:AccordionBodyPropsType) => {
     return (
-        <h3>{props.title}</h3>
+        <h3 onClick={()=>props.callBack(!props.collapsed)}>{props.title}</h3>
     )
 }

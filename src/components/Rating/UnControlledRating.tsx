@@ -1,18 +1,20 @@
 import React from "react";
 import {UnControlledStar} from "./Star/UnControlledStar";
+import {ratingValueType} from "../../App";
 
 type UnControlledRatingPropsType = {
-    value: 0 | 1 | 2 | 3 | 4 | 5
+    rating: ratingValueType
+    callBack:(value:ratingValueType)=>void
 }
 
 export const UnControlledRating = (props: UnControlledRatingPropsType) => {
     return (
         <div>
-            <UnControlledStar selected={props.value > 0}/>
-            <UnControlledStar selected={props.value > 1}/>
-            <UnControlledStar selected={props.value > 2}/>
-            <UnControlledStar selected={props.value > 3}/>
-            <UnControlledStar selected={props.value > 4}/>
+            <UnControlledStar selected={props.rating > 0} callBack={props.callBack} valueStar={1}/>
+            <UnControlledStar selected={props.rating > 1} callBack={props.callBack} valueStar={2}/>
+            <UnControlledStar selected={props.rating > 2} callBack={props.callBack} valueStar={3}/>
+            <UnControlledStar selected={props.rating > 3} callBack={props.callBack} valueStar={4}/>
+            <UnControlledStar selected={props.rating > 4} callBack={props.callBack} valueStar={5}/>
         </div>
     )
 }
