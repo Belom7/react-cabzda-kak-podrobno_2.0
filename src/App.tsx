@@ -46,7 +46,8 @@ function App() {
             <SelfControlledAccordion titleValue={'Menu1'}/>
             <SelfControlledAccordion titleValue={'Menu2'}/>
 
-            <SelfControlledOnOff callBack={setValueSelfControlledOnOff}/> {valueSelfControlledOnOff.toString()}
+            <SelfControlledOnOff callBack={setValueSelfControlledOnOff}/>
+            {valueSelfControlledOnOff.toString()}
             {/*<SelfControlledOnOff/>*/}
             {/*<SelfControlledOnOff/>*/}
         </div>

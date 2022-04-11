@@ -5,14 +5,12 @@ type SelfControlledOnOffType = {
 }
 
 export const SelfControlledOnOff = (props: SelfControlledOnOffType) => {
-
     const [value, setValue] = useState(false)
 
     const onClickHandler = (valueButton: boolean) => {
         setValue(valueButton)
-        callBack()
+        props.callBack(valueButton)
     }
-    const callBack = () => props.callBack(value)
 
     const onStyle = {
         width: '40px',
