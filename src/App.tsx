@@ -15,8 +15,6 @@ function App() {
         const[ratingValue, setRatingValue] = useState<ratingValueType>(0)
         const[collapsedAccordion, setCollapsedAccordion] = useState<boolean>(false)
         const[valueOnOff, setValueOnOff] = useState<boolean>(false)
-        const[valueSelfControlledOnOff, setValueSelfControlledOnOff] = useState<boolean>(false)
-        console.log(valueSelfControlledOnOff)
 
     return (
         <div>
@@ -46,8 +44,7 @@ function App() {
             <SelfControlledAccordion titleValue={'Menu1'}/>
             <SelfControlledAccordion titleValue={'Menu2'}/>
 
-            <SelfControlledOnOff callBack={setValueSelfControlledOnOff}/>
-            {valueSelfControlledOnOff.toString()}
+            <SelfControlledOnOff/>
             {/*<SelfControlledOnOff/>*/}
             {/*<SelfControlledOnOff/>*/}
         </div>

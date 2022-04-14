@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 type SelfControlledOnOffType = {
-    callBack: (value:boolean) => void
+    // callBack: (value:boolean) => void
 }
 
 export const SelfControlledOnOff = (props: SelfControlledOnOffType) => {
@@ -9,7 +9,7 @@ export const SelfControlledOnOff = (props: SelfControlledOnOffType) => {
 
     const onClickHandler = (valueButton: boolean) => {
         setValue(valueButton)
-        props.callBack(valueButton)
+        // props.callBack(valueButton)
     }
 
     const onStyle = {

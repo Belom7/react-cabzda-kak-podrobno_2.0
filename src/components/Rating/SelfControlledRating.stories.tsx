@@ -6,5 +6,5 @@ export default {
     component: SelfControlledRating
 }
 
-export const EmptyStar = () => <SelfControlledRating />
+export const Rating = () => <SelfControlledRating />
 
