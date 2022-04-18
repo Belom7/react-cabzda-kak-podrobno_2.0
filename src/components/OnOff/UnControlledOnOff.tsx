@@ -2,7 +2,7 @@ import React from 'react';
 
 type UnControlledOnOffPropsType = {
     value: boolean
-    callBack:(value:boolean)=>void
+    callBack: (value:boolean)=>void
 }
 
 export const UnControlledOnOff = (props: UnControlledOnOffPropsType) => {
