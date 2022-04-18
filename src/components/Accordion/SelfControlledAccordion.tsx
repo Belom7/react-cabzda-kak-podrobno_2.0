@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import {AccordionTitle} from "./AccordionTitle/AccordionTitle";
 import {SelfControlledAccordionBody} from "./AccordionBody/SelfControlledAccordionBody";
+import { titleAccordion } from "../../App";
 
 type SelfControlledAccordionPropsType = {
     titleValue:string
+    titleAccordion:titleAccordion[]
 }
 
 export const SelfControlledAccordion = (props: SelfControlledAccordionPropsType) => {
@@ -15,7 +17,7 @@ export const SelfControlledAccordion = (props: SelfControlledAccordionPropsType)
     return (
         <div>
             <SelfControlledAccordionBody title={props.titleValue} callBack={collapsedMenu} collapsed={collapsed}/>
-            {collapsed && <AccordionTitle/>}
+            {/*{collapsed && <AccordionTitle titleAccordion={props.titleAccordion}/>}*/}
         </div>
     )
 }

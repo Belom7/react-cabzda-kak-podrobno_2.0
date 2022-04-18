@@ -7,14 +7,26 @@ import {UnControlledOnOff} from "./components/OnOff/UnControlledOnOff";
 import {SelfControlledOnOff} from "./components/OnOff/SelfControlledOnOff";
 import {SelfControlledAccordion} from "./components/Accordion/SelfControlledAccordion";
 import {SelfControlledRating} from "./components/Rating/SelfControlledRating";
+import {action} from "@storybook/addon-actions";
 
 export type ratingValueType = 0 | 1 | 2 | 3 | 4 | 5
+export type titleAccordion = {id:number, name:string}
 
 function App() {
 
-        const[ratingValue, setRatingValue] = useState<ratingValueType>(0)
-        const[collapsedAccordion, setCollapsedAccordion] = useState<boolean>(false)
-        const[valueOnOff, setValueOnOff] = useState<boolean>(false)
+    const titleAccordion = [
+        {id:1, name:'Maksim'},
+        {id:2, name:'Egor'},
+        {id:3, name:'Evgen'},
+        {id:4, name:'Iliya'},
+        {id:5, name:'Sasha'},
+    ]
+
+    const [ratingValue, setRatingValue] = useState<ratingValueType>(0)
+    const [collapsedAccordion, setCollapsedAccordion] = useState<boolean>(false)
+    const [valueOnOff, setValueOnOff] = useState<boolean>(false)
+
+    const callBack2 = action('clicked')
 
     return (
         <div>
@@ -29,7 +41,12 @@ function App() {
             {/*<UnControlledRating value={4}/>*/}
             {/*<UnControlledRating value={5}/>*/}
 
-            <UnControlledAccordion collapsed={collapsedAccordion} titleValue={'Menu1'} callBack={setCollapsedAccordion}/>
+            <UnControlledAccordion collapsed={collapsedAccordion}
+                                   titleValue={'Menu1'}
+                                   callBack={setCollapsedAccordion}
+                                   titleAccordion={titleAccordion}
+                                   callBack2={callBack2}
+            />
             {/*<UnControlledAccordion collapsed={collapsedAccordion} titleValue={'Menu2'} callBack={setCollapsedAccordion}/>*/}
 
             <UnControlledOnOff value={valueOnOff} callBack={setValueOnOff}/>
@@ -41,8 +58,8 @@ function App() {
             <SelfControlledRating/>
             <SelfControlledRating/>
 
-            <SelfControlledAccordion titleValue={'Menu1'}/>
-            <SelfControlledAccordion titleValue={'Menu2'}/>
+            <SelfControlledAccordion titleValue={'Menu1'} titleAccordion={titleAccordion}/>
+            <SelfControlledAccordion titleValue={'Menu2'} titleAccordion={titleAccordion}/>
 
             <SelfControlledOnOff/>
             {/*<SelfControlledOnOff/>*/}

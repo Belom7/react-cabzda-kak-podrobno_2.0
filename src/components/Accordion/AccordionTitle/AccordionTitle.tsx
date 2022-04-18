@@ -1,12 +1,19 @@
 import React from "react";
+import { titleAccordion } from "../../../App";
 
-export const AccordionTitle = () => {
+type AccordionTitlePropsType = {
+    titleAccordion:titleAccordion[]
+    callBack2:(value:number)=>void
+}
+
+export const AccordionTitle = (props:AccordionTitlePropsType) => {
+
+    const onClickHandler = (value:number) => {props.callBack2(value)}
+
     return (
         <div>
             <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
+                {props.titleAccordion.map(el=><li key={el.id} onClick={()=>onClickHandler(el.id)}>{el.name}</li>)}
             </ul>
         </div>
     )
