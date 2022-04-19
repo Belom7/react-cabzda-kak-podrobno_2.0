@@ -8,6 +8,7 @@ import {SelfControlledOnOff} from "./components/OnOff/SelfControlledOnOff";
 import {SelfControlledAccordion} from "./components/Accordion/SelfControlledAccordion";
 import {SelfControlledRating} from "./components/Rating/SelfControlledRating";
 import {action} from "@storybook/addon-actions";
+import {CastomSelect} from "./components/CastomSelect/CastomSelect";
 
 export type ratingValueType = 0 | 1 | 2 | 3 | 4 | 5
 export type titleAccordion = {id:number, name:string}
@@ -64,6 +65,8 @@ function App() {
             <SelfControlledOnOff/>
             {/*<SelfControlledOnOff/>*/}
             {/*<SelfControlledOnOff/>*/}
+
+            <CastomSelect/>
         </div>
     );
 }
