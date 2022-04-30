@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useReducer, useState} from 'react';
 import './App.css';
 import {UnControlledRating} from "./components/Rating/UnControlledRating";
 import {UnControlledAccordion} from "./components/Accordion/UnControlledAccordion";
@@ -10,21 +10,35 @@ import {SelfControlledRating} from "./components/Rating/SelfControlledRating";
 import {action} from "@storybook/addon-actions";
 import {CastomSelect} from "./components/CastomSelect/CastomSelect";
 
+export const TOGGLE_COLLAPSED = 'TOGGLE-COLLAPSED'
+
 export type ratingValueType = 0 | 1 | 2 | 3 | 4 | 5
-export type titleAccordion = {id:number, name:string}
+export type titleAccordion = { id: number, name: string }
+export type ActionType = {
+    type: string
+}
+
+const reducer = (state: boolean, action: ActionType) => {
+    switch (action.type){
+        case TOGGLE_COLLAPSED:
+            return !state
+        default : return state
+    }
+}
 
 function App() {
 
     const titleAccordion = [
-        {id:1, name:'Maksim'},
-        {id:2, name:'Egor'},
-        {id:3, name:'Evgen'},
-        {id:4, name:'Iliya'},
-        {id:5, name:'Sasha'},
+        {id: 1, name: 'Maksim'},
+        {id: 2, name: 'Egor'},
+        {id: 3, name: 'Evgen'},
+        {id: 4, name: 'Iliya'},
+        {id: 5, name: 'Sasha'},
     ]
 
     const [ratingValue, setRatingValue] = useState<ratingValueType>(0)
-    const [collapsedAccordion, setCollapsedAccordion] = useState<boolean>(false)
+    // const [collapsedAccordion, setCollapsedAccordion] = useState<boolean>(false)
+    const [collapsedAccordion, dispatch] = useReducer(reducer, false)
     const [valueOnOff, setValueOnOff] = useState<boolean>(false)
 
     const callBack2 = action('clicked')
@@ -44,7 +58,8 @@ function App() {
 
             <UnControlledAccordion collapsed={collapsedAccordion}
                                    titleValue={'Menu1'}
-                                   callBack={setCollapsedAccordion}
+                // callBack={setCollapsedAccordion}
+                                   callBack={dispatch}
                                    titleAccordion={titleAccordion}
                                    callBack2={callBack2}
             />

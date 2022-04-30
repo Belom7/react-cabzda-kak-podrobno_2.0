@@ -1,6 +1,7 @@
 import {UnControlledAccordion} from "./UnControlledAccordion";
-import {useState} from "react";
+import {useReducer, useState} from "react";
 import {action} from "@storybook/addon-actions";
+import {TOGGLE_COLLAPSED} from "../../App";
 
 
 export default {
@@ -19,6 +20,21 @@ const titleAccordion = [
     {id:5, name:'Sasha'},
 ]
 
+export type ActionType = {
+    type: string
+}
+export type StateType = {
+    collapsed:boolean
+}
+
+export const reducer = (state: StateType, action: ActionType): StateType => {
+    switch (action.type){
+        case TOGGLE_COLLAPSED:
+            return {...state, collapsed: !state.collapsed}
+        default : return state
+    }
+}
+
 export const Accordion1 = () => <UnControlledAccordion titleValue={'Menu 1'}
                                                        collapsed={true}
                                                        callBack={callBack}
@@ -30,10 +46,12 @@ export const Accordion2 = () => <UnControlledAccordion titleValue={'Menu 2'}
                                                        callBack2={callBack2}
                                                        titleAccordion={titleAccordion}/>
 export const Accordion3 = () => {
-    const [collapsed, setCollapsed] = useState(false)
+    // const [collapsed, setCollapsed] = useState(false)
+    const [collapsed, dispatch] = useReducer(reducer, {collapsed:false})
     return <UnControlledAccordion titleValue={'Menu 3'}
-                                  collapsed={collapsed}
-                                  callBack={setCollapsed}
+                                  collapsed={collapsed.collapsed}
+                                  // callBack={setCollapsed}
+                                  callBack={dispatch}
                                   callBack2={callBack2}
                                   titleAccordion={titleAccordion}/>
 }

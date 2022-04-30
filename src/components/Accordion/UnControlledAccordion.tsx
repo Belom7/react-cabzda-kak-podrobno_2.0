@@ -1,14 +1,15 @@
 import React from "react";
 import {UnControlledAccordionBody} from "./AccordionBody/UnControlledAccordionBody";
 import {AccordionTitle} from "./AccordionTitle/AccordionTitle";
-import {titleAccordion} from "../../App";
+import {ActionType, titleAccordion} from "../../App";
 
 type UnControlledAccordionPropsType = {
     titleValue: string
     collapsed: boolean
-    callBack:(collapsed:boolean)=>void
-    titleAccordion:titleAccordion[]
-    callBack2:(value:number)=>void
+    // callBack: (collapsed: boolean) => void
+    callBack: (dispatch:ActionType) => void
+    titleAccordion: titleAccordion[]
+    callBack2: (value: number) => void
 }
 
 export const UnControlledAccordion = (props: UnControlledAccordionPropsType) => {
