@@ -4,8 +4,8 @@ export default {
     title: 'UseEffect'
 }
 
-export const example = () => {         /* 1 отработала функция*/
-    console.log('example')
+export const SimpleExample = () => {         /* 1 отработала функция*/
+    console.log('SimpleExample')
 
     const [counter, setCounter] = useState(0)
     const [fake, setFake] = useState(1)
@@ -32,6 +32,51 @@ export const example = () => {         /* 1 отработала функция*
             </div>
 
 
+        </div>
+    )
+}
+
+export const SetTimeOutExample = () => {
+    console.log('SetTimeOutExample')
+
+    const [counter, setCounter] = useState(0)
+    const [fake, setFake] = useState(1)
+    const [tick, setTick] = useState(0)
+
+
+    useEffect(() => {
+        console.log('useEffect')
+
+        setTimeout(() => {
+            console.log('setTimeout')
+            document.title = counter.toString()
+        }, 3000)
+
+        // setInterval(() => {
+        //     console.log('setInterval 1')
+        //     setTick(tick + 1) /*возьмет значение инициализационное (44 строка) прибавит 1 и дальше будет вызывать этот 1*/
+        // }, 1000)
+
+        setInterval(() => {
+            console.log('setInterval 2')
+            setTick((state)=> state+1) /*вызовет функцию setTick в которую передаст state(измененное инициализиационное значение) и прибавит 1*/
+        }, 1000)
+    }, [counter])
+
+
+    return (      /*3 - отрисовался jsx    5- произошла перерисовка jsx*/
+        <div>
+            <div>
+                counter : {counter}
+                <button onClick={() => setCounter(counter + 1)}>counter</button>
+            </div>
+            <div>
+                fake : {fake}
+                <button onClick={() => setFake(fake + 1)}>klick</button>
+            </div>
+            <div>
+                tick : {tick}
+            </div>
         </div>
     )
 }
