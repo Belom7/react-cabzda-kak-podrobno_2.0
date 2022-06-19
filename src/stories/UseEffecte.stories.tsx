@@ -35,8 +35,7 @@ export const SimpleExample = () => {         /* 1 отработала функ�
         </div>
     )
 }
-
-export const SetTimeOutExample = () => {
+export const SetIntervalOutExample = () => {
     console.log('SetTimeOutExample')
 
     const [counter, setCounter] = useState(0)
@@ -47,21 +46,14 @@ export const SetTimeOutExample = () => {
     useEffect(() => {
         console.log('useEffect')
 
-        setTimeout(() => {
-            console.log('setTimeout')
-            document.title = counter.toString()
-        }, 3000)
-
-        // setInterval(() => {
-        //     console.log('setInterval 1')
-        //     setTick(tick + 1) /*возьмет значение инициализационное (44 строка) прибавит 1 и дальше будет вызывать этот 1*/
-        // }, 1000)
-
-        setInterval(() => {
+        const intervalId = setInterval(() => {
             console.log('setInterval 2')
-            setTick((state)=> state+1) /*вызовет функцию setTick в которую передаст state(измененное инициализиационное значение) и прибавит 1*/
+            setTick((state) => state + 1) /*вызовет функцию setTick в которую передаст state(измененное инициализиационное значение) и прибавит 1*/
         }, 1000)
-    }, [counter])
+        return () => {
+            clearInterval(intervalId)
+        }
+    }, [])
 
 
     return (      /*3 - отрисовался jsx    5- произошла перерисовка jsx*/
@@ -77,6 +69,86 @@ export const SetTimeOutExample = () => {
             <div>
                 tick : {tick}
             </div>
+        </div>
+    )
+}
+export const ResetEffectExample = () => {
+
+    const [counter, setCounter] = useState(0)
+    console.log('Component render' + counter)
+
+
+    useEffect(() => {
+        console.log('Effect occurred' + counter)
+        return () => {
+            console.log('Reset Effect' + counter)
+        }
+    }, [counter])
+
+
+    const increase = () => {
+        setCounter(counter + 1)
+    }
+
+    return (
+        <div>
+            hello, counter : {counter}
+            <button onClick={increase}>click me</button>
+        </div>
+    )
+}
+export const KeysTrackerExample = () => {
+
+    const [text, setText] = useState('')
+    console.log('Component render' + text)
+
+
+    useEffect(() => {
+            console.log('Effect occurred' + text)
+
+            const handler = (e: KeyboardEvent) => {
+                console.log(e.key)
+                setText((state) => state + e.key)
+            }
+
+            window.addEventListener('keypress', handler)
+            return () => {
+                window.removeEventListener('keypress', handler)
+            }
+        }, []
+    )
+
+
+    return (
+        <div>
+            text : {text}
+        </div>
+    )
+}
+export const SetTimeOutExample = () => {
+
+    const [text, setText] = useState('')
+    console.log('Component render' + text)
+
+
+    useEffect(() => {
+            console.log('Effect occurred' + text)
+
+            const timeOutId = setTimeout(() => {
+                console.log('Expired!')
+                setText('3 seconds piu-piu')
+            }, 3000)
+
+            return () => {
+                clearTimeout(timeOutId)
+            }
+        }, [text]
+    )
+
+
+    return (
+        <div>
+            text : {text}
         </div>
     )
 }
