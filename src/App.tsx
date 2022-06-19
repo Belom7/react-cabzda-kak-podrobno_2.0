@@ -9,6 +9,7 @@ import {SelfControlledAccordion} from "./components/Accordion/SelfControlledAcco
 import {SelfControlledRating} from "./components/Rating/SelfControlledRating";
 import {action} from "@storybook/addon-actions";
 import {CastomSelect} from "./components/CastomSelect/CastomSelect";
+import {Clock} from "./components/Clock/Clock";
 
 export const TOGGLE_COLLAPSED = 'TOGGLE-COLLAPSED'
 
@@ -19,10 +20,11 @@ export type ActionType = {
 }
 
 const reducer = (state: boolean, action: ActionType) => {
-    switch (action.type){
+    switch (action.type) {
         case TOGGLE_COLLAPSED:
             return !state
-        default : return state
+        default :
+            return state
     }
 }
 
@@ -82,6 +84,9 @@ function App() {
             {/*<SelfControlledOnOff/>*/}
 
             <CastomSelect/>
+
+            <Clock mode={'Analog'}/>
+            <Clock mode={'Digital'}/>
         </div>
     );
 }

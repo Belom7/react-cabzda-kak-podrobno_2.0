@@ -1,37 +1,34 @@
 import React, {useEffect, useState} from 'react';
+import {DigitalClock} from "./Digital/DigitalClock";
+import {AnalogClock} from "./Analog/AnalogClock";
 
-type ClockPropsType = {}
+type ClockPropsType = {
+    mode: 'Analog' | 'Digital'
+}
 
 
-
-export const Clock = ({}: ClockPropsType) => {
+export const Clock = ({mode}: ClockPropsType) => {
 
     const [data, setData] = useState(new Date())
 
-    const twoCharacters = (title:number):string =>title < 10 ? `0${title}` : title.toString()
+    useEffect(() => {
 
-    useEffect(()=>{
-
-        const intervalId = setInterval(()=>{
+        const intervalId = setInterval(() => {
             console.log('tik-tak')
             setData(new Date())
-        },1000)
+        }, 1000)
 
         return () => clearInterval(intervalId)
 
-    },[])
+    }, [])
 
-
-
-    const hours = twoCharacters(data.getHours())
-    const minutes = twoCharacters(data.getMinutes())
-    const seconds = twoCharacters(data.getSeconds())
 
     return (
         <div>
-            <span>{twoCharacters(data.getHours())}</span>
-            <span>:{twoCharacters(data.getMinutes())}</span>
-            <span>:{twoCharacters(data.getSeconds())}</span>
+            {mode === 'Digital' ?
+                <DigitalClock data={data}/>
+                : <AnalogClock data={data}/>
+            }
         </div>
     );
 };
